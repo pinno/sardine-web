@@ -84,11 +84,11 @@ background: #fff;
 
 <script>
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmVhcGlubmEiLCJhIjoiY2p2bnNxaGpqMXJycTQ4bDYzY3VxMjcwZyJ9.lATYZiVFjh0kIoTvL9UJ2g';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmVhcGlubmEiLCJhIjoiY2s3a2p3M3FmMDdyMTNsbzNxbml1NHI0ZyJ9.izB0kukvcCizg_iK5CSLRA';
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/andreapinna/ck66k1ky33krw1jloand5i13d',
+  style: 'mapbox://styles/andreapinna/ck7kiaaku07861itdefin47en',
   center: [9.119, 39.231],
   zoom: 13
 });
@@ -101,9 +101,9 @@ map.on('mousemove', function(e) {
 
 
 // https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
-var toggleableLayerIds = ['quartieri-name-2', 'puc-cagliari-name-2', 'andreapinna-squares-buildings-ghi-black-body', 'andreapinna-squares-parkings-ghi-black-body', 'andreapinna-squares-buildings-dni-black-body', 'andreapinna-squares-parkings-dni-black-body', 'andreapinna-squares-buildings-d2g-black-body', 'andreapinna-squares-parkings-d2g-black-body', 'andreapinna-squares-buildings-tmp-black-body', 'andreapinna-squares-parkings-tmp-black-body'];
+var toggleableLayerIds = ['puc-cagliari-name-2', 'quartieri-name-2', '02-edificio-semplificato-3mpyag', 'subset-parcheggi-clpquv', 'andreapinna-sq-buildings-ghi-black-body', 'andreapinna-sq-parkings-ghi-black-body', 'andreapinna-sq-buildings-dni-black-body', 'andreapinna-sq-parkings-dni-black-body', 'andreapinna-sq-buildings-d2g-black-body', 'andreapinna-sq-parkings-d2g-black-body', 'andreapinna-sq-buildings-tmp-black-body', 'andreapinna-sq-parkings-tmp-black-body'];
 
-var layerShortIds = ['Quartieri', 'Confini comunali', 'Buildings (GHI)', 'Parkings (GHI)', 'Buildings (DNI)', 'Parkings (DNI)', 'Buildings (D2G)', 'Parkings (D2G)', 'Buildings (TMP)', 'Parkings (TMP)']
+var layerShortIds = ['City boundaries', 'Districts', 'Buildings', 'Parkings', 'Buildings (GHI)', 'Parkings (GHI)', 'Buildings (DNI)', 'Parkings (DNI)', 'Buildings (D2G)', 'Parkings (D2G)', 'Buildings (TMP)', 'Parkings (TMP)']
  
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
