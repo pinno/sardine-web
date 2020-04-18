@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<! https://docs.mapbox.com/help/tutorials/custom-markers-gl-js/ >
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Slope and aspect for all buildings in Cagliari</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+	body { margin: 0; padding: 0; }
+	#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js'></script>
+<script src='mapbox-gl-draw-rectangle-mode.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css' type='text/css'/>
+
+
+<style>
+#menu {
+background: #fff;
+position: absolute;
+z-index: 1;
+top: 10px;
+right: 10px;
+border-radius: 3px;
+width: 120px;
+border: 1px solid rgba(0, 0, 0, 0.4);
+font-family: 'Open Sans', sans-serif;
+}
+ 
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+ 
+#menu a:last-child {
+border: none;
+}
+ 
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+ 
+#menu a.active {
+background-color: #3887be;
+color: #ffffff;
+}
+ 
+#menu a.active:hover {
+background: #3074a4;
+}
+
+#info {
+display: block;
+position: relative;
+margin: 0px auto;
+width: 50%;
+padding: 1px;
+border: none;
+border-radius: 3px;
+font-size: 12px;
+text-align: center;
+color: #222;
+background: #fff;
+}
+</style>
+
+<div id='map'></div>
+<nav id="menu"></nav>
+<pre id="info"></pre>
+
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5kcmVhcGlubmEiLCJhIjoiY2s3a2p3M3FmMDdyMTNsbzNxbml1NHI0ZyJ9.izB0kukvcCizg_iK5CSLRA';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/andreapinna/ck95v3kxe17391irxjbrmu5uh',
+  center: [9.119, 39.231],
+  zoom: 13
+});
+
+
+// https://docs.mapbox.com/mapbox-gl-js/example/mouse-position/
+map.on('mousemove', function(e) {
+  document.getElementById('info').innerHTML = JSON.stringify(e.lngLat.wrap());
+});
+
+
+// https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
+var toggleableLayerIds = ['ghi-diff-s45-a30-r5-piyg-t', 'ghi-tot-s45-a30-r5-afmhot-t', 'ghi-sardine-s45-a30-r5-afmhot-t', 'aspect-7fjp5d5j', 'slope-a76ylskj', 'terrain-b4sj3hrv'];
+
+var layerShortIds = ['GHI (difference)', 'GHI (approach)', 'GHI (SARDINE)', 'Aspect', 'Slope', 'Terrain']
+ 
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+  var id = toggleableLayerIds[i];
+ 
+  var link = document.createElement('a');
+  link.href = '#';
+  link.className = '';
+  link.textContent = layerShortIds[i];
+  link.layer = id;
+ 
+  link.onclick = function(e) {
+    var clickedLayer = this.layer;
+    e.preventDefault();
+    e.stopPropagation();
+ 
+    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+ 
+    if (visibility === 'visible') {
+      map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+      this.className = '';
+    }
+    else {
+      this.className = 'active';
+      map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+    }
+  };
+ 
+  var layers = document.getElementById('menu');
+  layers.appendChild(link);
+}
+
+
+// https://gist.github.com/andrewharvey/31b8180e3f5f1e12849a352796e0daf4
+var modes = MapboxDraw.modes;
+
+modes.draw_rectangle = DrawRectangle.default;
+
+var draw = new MapboxDraw({modes: modes});
+map.addControl(draw);
+
+draw.changeMode('draw_rectangle');
+
+map.on('draw.create', function (feature) {
+  console.log(feature);
+});
+
+
+</script>
+
+</body>
+</html>
