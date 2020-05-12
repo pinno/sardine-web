@@ -101,9 +101,9 @@ map.on('mousemove', function(e) {
 
 
 // https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
-var toggleableLayerIds = ['ghi-diff-s45-a30-r5-piyg-t', 'ghi-tot-s45-a30-r5-afmhot-t', 'ghi-sardine-s45-a30-r5-afmhot-t', 'aspect-7fjp5d5j', 'slope-a76ylskj', 'terrain-b4sj3hrv'];
+var toggleableLayerIds = ['dni-poa90-s45-a30-r5-afmhot-t', 'ghi-poa90-s45-a30-r5-afmhot-t', 'ghi-diff-s45-a30-r5-piyg-t', 'ghi-tot-s45-a30-r5-afmhot-t', 'ghi-sardine-s45-a30-r5-afmhot-t', 'aspect-7fjp5d5j', 'slope-a76ylskj', 'terrain-b4sj3hrv'];
 
-var layerShortIds = ['GHI (difference)', 'GHI (approach)', 'GHI (SARDINE)', 'Aspect', 'Slope', 'Terrain']
+var layerShortIds = ['POA (=R*DNI+DHI)', 'POA (=R*GHI)', 'GHI (difference)', 'GHI (approach)', 'GHI (SARDINE)', 'Aspect', 'Slope', 'Terrain']
  
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
