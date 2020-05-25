@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>PV Rooftop Potential in Cagliari</title>
+    <title>PV Rooftop Potential in Cagliari (CMSAF)</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
@@ -101,9 +101,9 @@ map.on('mousemove', function(e) {
 
 
 // https://docs.mapbox.com/mapbox-gl-js/example/toggle-layers/
-var toggleableLayerIds = ['prod-s45-a30-r5-afmhot-t', 'poa-s45-a30-r5-afmhot-t', 'ghi-tot-s45-a30-r5-afmhot-t', 'ghi-sardine-s45-a30-r5-afmhot-t', 'ghi-diff-s45-a30-r5-piyg-t', 'aspect-7fjp5d5j', 'slope-a76ylskj', 'terrain-b4sj3hrv'];
+var toggleableLayerIds = ['prod-tilt-cmsaf-s45-a30-r5-afmho', 'poa-s45-a30-r5-afmhot-t', 'ghi-tot-s45-a30-r5-afmhot-t', 'ghi-sardine-s45-a30-r5-afmhot-t', 'ghi-diff-s45-a30-r5-piyg-t', 'aspect-7fjp5d5j', 'slope-a76ylskj', 'terrain-b4sj3hrv'];
 
-var layerShortIds = ['Energy', 'POA', 'GHI (approach)', 'GHI (SARDINE)', 'GHI (difference)', 'Aspect', 'Slope', 'Terrain']
+var layerShortIds = ['Production', 'POA', 'GHI (proposed)', 'GHI (reference)', 'GHI (difference)', 'Aspect', 'Slope', 'Terrain']
  
 for (var i = 0; i < toggleableLayerIds.length; i++) {
   var id = toggleableLayerIds[i];
